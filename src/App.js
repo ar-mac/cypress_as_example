@@ -17,6 +17,9 @@ function App() {
 
   const create = async () => {
     const val = inputRef.current.value
+    if (val === '') {
+      return
+    }
     inputRef.current.value = ''
     const resp = await instance.post('/items', { url: `www.${val}` })
     fetchResourceWithToken(resp.data.tokenPath)

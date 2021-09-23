@@ -1,9 +1,11 @@
-### App to demonstrate cypress thingy
+## App to demonstrate cypress thingy
 
-setup:
+#### App setup
 `yarn install`
 `yarn run setup:db`
 
-run:
+#### App running
 `yarn start`
 `yarn run start:server`
+
+#### App functionality
