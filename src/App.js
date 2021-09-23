@@ -1,10 +1,10 @@
-import './App.css';
-import axios from "axios";
-import { useRef, useState } from "react";
+import './App.css'
+import axios from 'axios'
+import { useRef, useState } from 'react'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3001'
-});
+  baseURL: 'http://localhost:3001',
+})
 
 function App() {
   const inputRef = useRef()
@@ -12,20 +12,21 @@ function App() {
 
   const fetchResourceWithToken = async (path) => {
     const resp = await instance.get(path)
-    setUrls((currentUrls) => ([...currentUrls, resp.data.urlWithToken]))
+    setUrls((currentUrls) => [...currentUrls, resp.data.urlWithToken])
   }
 
   const create = async () => {
     const val = inputRef.current.value
     inputRef.current.value = ''
-    const resp = await instance.post('/items', {url: `www.${val}`})
+    const resp = await instance.post('/items', { url: `www.${val}` })
     fetchResourceWithToken(resp.data.tokenPath)
   }
 
   return (
     <div className="App">
       <div>
-        www.<input className="App-input" ref={inputRef}/>
+        www.
+        <input className="App-input" ref={inputRef} />
       </div>
       <button onClick={create}>Create!</button>
       <ul>
@@ -34,7 +35,7 @@ function App() {
         ))}
       </ul>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
