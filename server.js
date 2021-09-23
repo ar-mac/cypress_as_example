@@ -17,10 +17,13 @@ server.post('/items', (req, res, next) => {
   req.body.tokenPath = `/paths/${id}`
 
   router.db.read()
-  router.db.get('paths').insert({
-    id,
-    urlWithToken: data.url + `?myToken=${nanoidToken()}`
-  }).value()
+  router.db
+    .get('paths')
+    .insert({
+      id,
+      urlWithToken: data.url + `?myToken=${nanoidToken()}`,
+    })
+    .value()
   router.db.write()
 
   next()
